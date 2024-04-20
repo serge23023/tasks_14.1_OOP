@@ -10,19 +10,6 @@ class Category:
         self._description = description
         self._products = self.init_products(products)
         Category._total_categories += 1
-        Category._total_unique_products += len(set(product.name for product in self.products))
-
-    @property
-    def name(self):
-        return self._name
-
-    @property
-    def description(self):
-        return self._description
-
-    @property
-    def products(self):
-        return self._products
 
     @classmethod
     def total_categories(cls):
@@ -35,8 +22,11 @@ class Category:
     @staticmethod
     def init_products(products: list[dict]) -> list[Product]:
         list_products = []
+        set_name = set()
         for product in products:
             list_products.append(Product(**product))
+            set_name.add(product['name'])
+        Category._total_unique_products += len(set_name)
         return list_products
 
     # def add_product(self, product: dict):
