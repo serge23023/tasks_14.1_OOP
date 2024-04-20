@@ -11,7 +11,6 @@ class Category:
         self._products = self.init_products(products)
         Category.__total_categories += 1
 
-
     @classmethod
     def total_categories(cls):
         return cls.__total_categories

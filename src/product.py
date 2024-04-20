@@ -7,4 +7,4 @@ class Product:
 
     def __repr__(self):
         return ("{" + f"'name': '{self.__name}', 'description': '{self.__description}',"
-                f" 'price': {self.__price}, 'quantity': {self.__quantity}" + "}")
+                      f" 'price': {self.__price}, 'quantity': {self.__quantity}" + "}")
