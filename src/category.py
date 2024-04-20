@@ -30,7 +30,7 @@ class Category:
         return list_products
 
     def __repr__(self):
-        return f"name: {self.__name}, description: {self.__description}, products: {self._products}"
+        return f"\nname: {self.__name}, description: {self.__description}, products: {self._products}"
 
     # def add_product(self, product: dict):
     #     self.products.append(Product(**product))
