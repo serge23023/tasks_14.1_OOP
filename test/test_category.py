@@ -36,16 +36,6 @@ def test_category(categories_test, product_dict_test):
     category2.add_product(new_unique_product)
     assert Category.total_unique_products() == 3
 
-    #     for product in category.products:
-    #         assert isinstance(product, Product)
-    #         assert product.name == product_dict_test['product1']['name']
-    #         assert product.description == product_dict_test['product1']['description']
-    #         assert product.price == product_dict_test['product1']['price']
-    #         assert product.quantity == product_dict_test['product1']['quantity']
-    #         assert repr(product) == (f"{product_dict_test['product1']['name']}, "
-    #                                  f"{product_dict_test['product1']['price']} руб. "
-    #                                  f"Остаток: {product_dict_test['product1']['quantity']} шт.")
-
 
 if __name__ == '__main__':
     pytest.main()
