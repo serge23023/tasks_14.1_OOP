@@ -5,6 +5,12 @@ from src.read_file import open_json
 
 def test_open_json():
     # Проверка, что функция open_json возвращает список
-    assert type(open_json('products.json')) is list
+    assert isinstance(open_json('products.json'), list)
+
+    # Проверка, что функция open_json вызывает исключение при пустой строке
     with pytest.raises(TypeError):
         open_json('')
+
+
+if __name__ == '__main__':
+    pytest.main()
