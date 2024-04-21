@@ -1,10 +1,9 @@
 class Product:
     def __init__(self, name: str, description: str, price: float, quantity: int):
-        self.__name = name
-        self.__description = description
-        self.__price = price
-        self.__quantity = quantity
+        self.name = name
+        self.description = description
+        self.price = price
+        self.quantity = quantity
 
     def __repr__(self):
-        return ("\n\t\t\t\t{" + f"'name': '{self.__name}', 'description': '{self.__description}', "
-                                f"'price': {self.__price}, 'quantity': {self.__quantity}" + "}")
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
