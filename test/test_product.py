@@ -1,3 +1,5 @@
+from unittest.mock import patch
+
 import pytest
 
 from src.product import Product
@@ -49,6 +51,34 @@ def test_create_product_new_product(product_dict_test):
     assert product2.name == product_dict_test[key_dict2]['name']  # Проверка имени
     assert product2.price == product_dict_test[key_dict2]['price']  # Проверка цены
     assert product2.quantity == product_dict_test[key_dict2]['quantity']  # Проверка количества
+
+
+def test_price_setter_negative():
+    # Проверка, что при вводе отрицательной цены выводится сообщение об ошибке
+    with patch('builtins.print') as mocked_print:
+        product = Product('name', 'description', -10.0, 10)
+        product.price = -10.0
+        mocked_print.assert_called_once_with('Введена некорректная цена: -10.0')
+
+
+def test_price_setter_lower():
+    # Проверка подтверждения понижения цены
+    product = Product('name', 'description', 10.0, 10)
+    with patch('builtins.input', return_value=''):
+        product.price = 5.0  # Вводим меньшую цену без подтверждения
+    # Проверяем, что цена не изменилась
+    assert product.price == 10.0
+    # Подтверждаем понижение цены
+    with patch('builtins.input', return_value='y'):
+        product.price = 5.0
+    assert product.price == 5.0
+
+
+def test_price_setter_raise():
+    # Проверка увеличения цены
+    product = Product('name', 'description', 10.0, 10)
+    product.price = 15.0
+    assert product.price == 15.0
 
 
 if __name__ == '__main__':

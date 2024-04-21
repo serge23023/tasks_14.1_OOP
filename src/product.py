@@ -22,8 +22,22 @@ class Product:
     def __init__(self, name: str, description: str, price: float, quantity: int):
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price  # !!!!!!!!! setter при инициализации?
         self.quantity = quantity
+
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self, value):
+        if value <= 0:
+            print(f'Введена некорректная цена: {value}')
+        elif value < self.__price:
+            if input(f'Цена после подтверждения: {value} руб.\nВведите "y" для подтверждения понижения цены:') == 'y':
+                self.__price = float(value)
+        else:
+            self.__price = float(value)
 
     def __repr__(self):
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
