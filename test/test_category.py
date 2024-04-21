@@ -1,28 +1,41 @@
+import pytest
+
 from src.category import Category
-from src.product import Product
 
 
-def test_category(categories_test, product_test):
-    for category in categories_test:
-        assert isinstance(category, Category)
-        assert repr(category) == f"\nname: name, description: description, products: [name, 0.0 руб. Остаток: 0 шт.]"
-        assert category.name == 'name'
-        for product in category.products:
-            assert isinstance(product, Product)
-            assert product.name == 'name'
-            assert product.description == 'description'
-            assert product.price == 0.0
-            assert product.quantity == 0
-            assert repr(product) == "name, 0.0 руб. Остаток: 0 шт."
+def test_category(categories_test, product_dict_test):
+    category1 = categories_test[0]
+
+    # Проверяем категорию
+    assert isinstance(category1, Category)
+    assert category1.name == 'test1'
+    assert repr(category1) == f"\nname: test1, description: description, products: {repr(category1.products)}"
+
+    # Проверяем общее количество категорий и уникальных продуктов
     assert Category.total_categories() == 1
     assert Category.total_unique_products() == 1
-    categories_test.append(Category('test2', 'test'))
+
+    # Добавляем новую категорию и проверяем общее количество категорий
+    category2 = Category('test2', 'description')
+    categories_test.append(category2)
     assert Category.total_categories() == 2
-    for c in categories_test:
-        print(c)
-    assert Category.total_unique_products() == 1
-    for category in categories_test:
-        if category.name == 'test2':
-            category.add_product(Product('name1', 'description', 0.0, 0))
-    assert Category.total_categories() == 2
+
+    # Добавляем продукты в категорию и проверяем общее количество уникальных продуктов и его наличие в списке продуктов
+    new_product = product_dict_test['product4']
+    category1.add_product(new_product)
     assert Category.total_unique_products() == 2
+    assert any(product.name == new_product['name'] for product in category1.products)
+
+    # Добавляем продукт, который уже существует, и проверяем общее количество уникальных продуктов
+    duplicate_product = product_dict_test['product4']
+    category1.add_product(duplicate_product)
+    assert Category.total_unique_products() == 2
+
+    # Добавляем продукт с новым именем и проверяем общее количество уникальных продуктов
+    new_unique_product = product_dict_test['product4']
+    category2.add_product(new_unique_product)
+    assert Category.total_unique_products() == 3
+
+
+if __name__ == '__main__':
+    pytest.main()

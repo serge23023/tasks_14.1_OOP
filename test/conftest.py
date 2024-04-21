@@ -5,10 +5,21 @@ from src.product import Product
 
 
 @pytest.fixture()
-def product_test():
-    return [Product('name', 'description', 0.0, 0)]
+def product_dict_test():
+    return {
+        'product1': {'name': 'name', 'description': 'description', 'price': 0.0, 'quantity': 0},
+        'product2': {'name': 'name', 'description': 'description', 'price': 10.0, 'quantity': 10},
+        'product3': {'name': 'name', 'description': 'description', 'price': 100.0, 'quantity': 10},
+        'product4': {'name': 'name1', 'description': 'description', 'price': 100.0, 'quantity': 100}
+    }.copy()
 
 
 @pytest.fixture()
-def categories_test(product_test):
-    return [Category('name', 'description', product_test.copy())]
+def categories_test(product_dict_test):
+    Category.reset()
+    return [
+        Category(
+            'test1',
+            'description',
+            [Product.create_product(product_dict_test['product1'])])
+    ].copy()
