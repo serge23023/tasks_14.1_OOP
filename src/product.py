@@ -11,7 +11,6 @@ class Product:
                 if product.price >= new_product['price']:
                     # Если у существующего товара цена выше, используем его цену
                     product.quantity += new_product['quantity']
-                    # product_list.remove(product)
                     return
                 else:
                     # Иначе используем новую цену
