@@ -36,8 +36,7 @@ class Category:
     def __repr__(self):
         return f"\nname: {self.__name}, description: {self.__description}, products: {self.__products}"
 
-    def add_product(self, product: dict):
-        new_product = Product.create_product(product, self.__products)
-        if product['name'] not in (p.name for p in self.__products):
+    def add_product(self, product: Product):
+        if product.name not in (p.name for p in self.__products):
             Category.__total_unique_products += 1
-            self.__products.append(new_product)
+            self.__products.append(product)
