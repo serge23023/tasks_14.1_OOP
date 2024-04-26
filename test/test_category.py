@@ -10,7 +10,8 @@ def test_category(categories_test, product_dict_test):
     # Проверяем категорию
     assert isinstance(category1, Category)
     assert category1.name == 'test1'
-    assert repr(category1) == f"\nname: test1, description: description, products: {repr(category1.products)}"
+    assert len(category1) == 0
+    assert str(category1) == f"\ntest1, количество продуктов: {len(category1)} шт."
 
     # Проверяем общее количество категорий и уникальных продуктов
     assert Category.total_categories() == 1
