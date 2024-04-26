@@ -14,5 +14,4 @@ def create_categories():
 def add_product_to_category(categories: list[Category], name: str, product: dict):
     for category in categories:
         if category.name == name:
-            new_product = Product.create_product(product, category.products)
-            category.add_product(new_product)
+            category.add_product(Product.create_product(product, category.products))
