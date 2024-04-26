@@ -1,11 +1,15 @@
-# from src.utils import add_property_to_category
+from src.for_in_categories import ForInCategories
 from src.utils import create_categories
 
 if __name__ == '__main__':
     categories = create_categories()
+
+    for product in ForInCategories(categories[0].products):
+        print(product)
+
+    print('---------------')
     for category in categories:
-        print(category.products)
-    # categories = create_categories()
-    # add_property_to_category(categories, 'Смартфоны',
-    #                          {'name': 'name', 'description': 'description', 'price': 0.0, 'quantity': 0})
-    # print([p for p in categories])
+        print(category)
+
+    print('---------------')
+    print(categories[0].products[0] + categories[0].products[1])
