@@ -1,4 +1,4 @@
-from src.for_in_categories import ForInCategories
+from src.classes.for_in_categories import ForInCategories
 from src.utils import create_categories
 
 if __name__ == '__main__':

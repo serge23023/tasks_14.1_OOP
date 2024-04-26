@@ -1,7 +1,7 @@
 import pytest
 
-from src.for_in_categories import ForInCategories
-from src.product import Product
+from src.classes.for_in_categories import ForInCategories
+from src.classes.product import Product
 
 
 def test_for_in_categories(categories_test, product_dict_test):

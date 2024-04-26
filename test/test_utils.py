@@ -1,6 +1,6 @@
 import pytest
 
-from src.category import Category
+from src.classes.category import Category
 from src.utils import create_categories, add_product_to_category
 
 
