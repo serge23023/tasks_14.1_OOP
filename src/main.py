@@ -1,4 +1,3 @@
-# from src.utils import add_property_to_category
 from src.for_in_categories import ForInCategories
 from src.utils import create_categories
 
