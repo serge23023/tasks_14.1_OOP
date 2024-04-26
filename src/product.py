@@ -39,5 +39,8 @@ class Product:
         else:
             self.__price = float(value)
 
-    def __repr__(self):
+    def __str__(self):
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        return self.__price * self.quantity + other.__price * other.quantity
