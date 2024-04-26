@@ -33,8 +33,14 @@ class Category:
     def name(self):
         return self.__name
 
-    def __repr__(self):
-        return f"\nname: {self.__name}, description: {self.__description}, products: {self.__products}"
+    def __len__(self):
+        count = 0
+        for product in self.__products:
+            count += product.quantity
+        return count
+
+    def __str__(self):
+        return f"\n{self.__name}, количество продуктов: {len(self)} шт."
 
     def add_product(self, product: Product):
         if product.name not in (p.name for p in self.__products):
