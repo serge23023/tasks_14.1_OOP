@@ -2,7 +2,7 @@ from unittest.mock import patch
 
 import pytest
 
-from src.classes.product import Product
+from src.classes.products_classes.product import Product
 
 
 def test_product(product_dict_test):
