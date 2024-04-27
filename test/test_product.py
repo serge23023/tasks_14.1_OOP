@@ -86,12 +86,12 @@ def test_price_setter_lower():
     assert product.price == 5.0
 
 
+if __name__ == '__main__':
+    pytest.main()
+
+
 def test_price_setter_raise():
     # Проверка увеличения цены
     product = Product('name', 'description', 10.0, 10)
     product.price = 15.0
     assert product.price == 15.0
-
-
-if __name__ == '__main__':
-    pytest.main()

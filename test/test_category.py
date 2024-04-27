@@ -3,6 +3,9 @@ import pytest
 from src.classes.category import Category
 from src.classes.product import Product
 
+if __name__ == '__main__':
+    pytest.main()
+
 
 def test_category(categories_test, product_dict_test):
     category1 = categories_test[0]
@@ -44,7 +47,3 @@ def test_add_product(categories_test, product_dict_test):
     # Добавляем объект тип которого не class Product или его наследник
     with pytest.raises(TypeError):
         category1.add_product("Not a product")
-
-
-if __name__ == '__main__':
-    pytest.main()
