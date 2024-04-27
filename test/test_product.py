@@ -26,6 +26,9 @@ def test_add_product(product_dict_test):
     product2 = Product(**product_dict_test[key_dict2])
     assert product1 + product2 == 1100.0
 
+    with pytest.raises(TypeError):
+        product1 + "Not a product"
+
 
 def test_create_product_new_price(product_dict_test):
     # Тестирование создания нового продукта с обновлением цены
