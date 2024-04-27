@@ -3,6 +3,9 @@ import pytest
 from src.classes.for_in_categories import ForInCategories
 from src.classes.product import Product
 
+if __name__ == '__main__':
+    pytest.main()
+
 
 def test_for_in_categories(categories_test, product_dict_test):
     products = categories_test[0].products
