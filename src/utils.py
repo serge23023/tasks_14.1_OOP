@@ -1,5 +1,5 @@
 from src.classes.category import Category
-from src.classes.product import Product
+from src.classes.products_classes.product import Product
 from src.read_file import open_json
 
 

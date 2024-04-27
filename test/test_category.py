@@ -1,7 +1,10 @@
 import pytest
 
 from src.classes.category import Category
-from src.classes.product import Product
+from src.classes.products_classes.product import Product
+
+if __name__ == '__main__':
+    pytest.main()
 
 
 def test_category(categories_test, product_dict_test):
@@ -22,6 +25,10 @@ def test_category(categories_test, product_dict_test):
     categories_test.append(category2)
     assert Category.total_categories() == 2
 
+
+def test_add_product(categories_test, product_dict_test):
+    category1 = categories_test[0]
+
     # Добавляем продукты в категорию и проверяем общее количество уникальных продуктов и его наличие в списке продуктов
     new_product = Product(**product_dict_test['product4'])
     category1.add_product(new_product)
@@ -29,15 +36,14 @@ def test_category(categories_test, product_dict_test):
     assert any(product.name == new_product.name for product in category1.products)
 
     # Добавляем продукт, который уже существует, и проверяем общее количество уникальных продуктов
-    duplicate_product = Product(**product_dict_test['product4'])
-    category1.add_product(duplicate_product)
+    category1.add_product(new_product)
     assert Category.total_unique_products() == 2
 
     # Добавляем продукт с новым именем и проверяем общее количество уникальных продуктов
-    new_unique_product = Product(**product_dict_test['product4'])
-    category2.add_product(new_unique_product)
+    new_unique_product = Product(**product_dict_test['product5'])
+    category1.add_product(new_unique_product)
     assert Category.total_unique_products() == 3
 
-
-if __name__ == '__main__':
-    pytest.main()
+    # Добавляем объект тип которого не class Product или его наследник
+    with pytest.raises(TypeError):
+        category1.add_product("Not a product")

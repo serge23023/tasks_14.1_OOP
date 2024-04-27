@@ -2,7 +2,7 @@ from unittest.mock import patch
 
 import pytest
 
-from src.classes.product import Product
+from src.classes.products_classes.product import Product
 
 
 def test_product(product_dict_test):
@@ -25,6 +25,9 @@ def test_add_product(product_dict_test):
     product1 = Product(**product_dict_test[key_dict1])
     product2 = Product(**product_dict_test[key_dict2])
     assert product1 + product2 == 1100.0
+
+    with pytest.raises(TypeError):
+        product1 + "Not a product"
 
 
 def test_create_product_new_price(product_dict_test):
@@ -83,12 +86,12 @@ def test_price_setter_lower():
     assert product.price == 5.0
 
 
+if __name__ == '__main__':
+    pytest.main()
+
+
 def test_price_setter_raise():
     # Проверка увеличения цены
     product = Product('name', 'description', 10.0, 10)
     product.price = 15.0
     assert product.price == 15.0
-
-
-if __name__ == '__main__':
-    pytest.main()

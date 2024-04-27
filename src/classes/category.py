@@ -1,4 +1,4 @@
-from src.classes.product import Product
+from src.classes.products_classes.product import Product
 
 
 class Category:
@@ -43,6 +43,9 @@ class Category:
         return f"\n{self.__name}, количество продуктов: {len(self)} шт."
 
     def add_product(self, product: Product):
-        if product.name not in (p.name for p in self.__products):
-            Category.__total_unique_products += 1
+        if issubclass(product.__class__, Product):
+            if product.name not in (p.name for p in self.__products):
+                Category.__total_unique_products += 1
             self.__products.append(product)
+        else:
+            raise TypeError
