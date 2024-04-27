@@ -10,7 +10,8 @@ def product_dict_test():
         'product1': {'name': 'name', 'description': 'description', 'price': 1.0, 'quantity': 0},
         'product2': {'name': 'name', 'description': 'description', 'price': 10.0, 'quantity': 10},
         'product3': {'name': 'name', 'description': 'description', 'price': 100.0, 'quantity': 10},
-        'product4': {'name': 'name1', 'description': 'description', 'price': 100.0, 'quantity': 100}
+        'product4': {'name': 'name1', 'description': 'description', 'price': 100.0, 'quantity': 100},
+        'product5': {'name': 'name2', 'description': 'description', 'price': 100.0, 'quantity': 100}
     }.copy()
 
 
