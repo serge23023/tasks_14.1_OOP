@@ -55,5 +55,14 @@ class Category(AbstractOrder, MixinCreationLogger):
         else:
             raise TypeError
 
+    def average_price(self):
+        try:
+            average = 0
+            for product in self.__products:
+                average += product.price
+            return average / len(self.__products)
+        except ZeroDivisionError:
+            return 0
+
     def __repr__(self):
         return f'{self.__class__.__name__}({self.__name}, {self.__description}, {self.__products}'

@@ -27,23 +27,30 @@ def test_category(categories_test, product_dict_test):
 
 
 def test_add_product(categories_test, product_dict_test):
-    category1 = categories_test[0]
+    category = categories_test[0]
 
     # Добавляем продукты в категорию и проверяем общее количество уникальных продуктов и его наличие в списке продуктов
     new_product = Product(**product_dict_test['product4'])
-    category1.add_product(new_product)
+    category.add_product(new_product)
     assert Category.total_unique_products() == 2
-    assert any(product.name == new_product.name for product in category1.products)
+    assert any(product.name == new_product.name for product in category.products)
 
     # Добавляем продукт, который уже существует, и проверяем общее количество уникальных продуктов
-    category1.add_product(new_product)
+    category.add_product(new_product)
     assert Category.total_unique_products() == 2
 
     # Добавляем продукт с новым именем и проверяем общее количество уникальных продуктов
     new_unique_product = Product(**product_dict_test['product5'])
-    category1.add_product(new_unique_product)
+    category.add_product(new_unique_product)
     assert Category.total_unique_products() == 3
 
     # Добавляем объект тип которого не class Product или его наследник
     with pytest.raises(TypeError):
-        category1.add_product("Not a product")
+        category.add_product("Not a product")
+
+
+def test_average_price(categories_test):
+    category = categories_test[0]
+    assert category.average_price() == 1.0
+    category.products.remove(category.products[0])
+    assert category.average_price() == 0

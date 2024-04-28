@@ -71,9 +71,8 @@ def test_create_product_new_product(product_dict_test):
 def test_price_setter_negative():
     # Проверка, что при вводе отрицательной цены выводится сообщение об ошибке
     product = Product('name', 'description', -10.0, 10)
-    with patch('builtins.print') as mocked_print:
+    with pytest.raises(ValueError):
         product.price = -10.0
-        mocked_print.assert_called_once_with('Введена некорректная цена: -10.0')
 
 
 def test_price_setter_lower():
