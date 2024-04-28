@@ -3,6 +3,8 @@ from src.classes.products_classes.product import Product
 
 
 class LawnGrass(Product, MixinCreationLogger):
+    __slots__ = ('country', 'germination_period', 'color')
+
     def __init__(self, name, description, price, quantity, country, germination_period, color):
         self.country = country
         self.germination_period = germination_period

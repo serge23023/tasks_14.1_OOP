@@ -4,6 +4,8 @@ from src.classes.products_classes.product import Product
 
 
 class Category(AbstractOrder, MixinCreationLogger):
+    __slots__ = ('__name', '__description', '__products')
+
     __total_categories = 0
     __total_unique_products = 0
 

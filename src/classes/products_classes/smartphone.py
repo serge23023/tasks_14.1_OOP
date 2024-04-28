@@ -3,6 +3,8 @@ from src.classes.products_classes.product import Product
 
 
 class Smartphone(Product, MixinCreationLogger):
+    __slots__ = ('performance', 'model', 'memory', 'color')
+
     def __init__(self, name, description, price, quantity, performance, model, memory, color):
         self.performance = performance
         self.model = model

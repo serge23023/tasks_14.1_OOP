@@ -3,6 +3,8 @@ from src.classes.order_classes.abstract_order import AbstractOrder
 
 
 class Order(AbstractOrder, MixinCreationLogger):
+    __slots__ = ('product', 'quantity', 'total_cost')
+
     def __init__(self, product, quantity):
         self.product = product
         self.quantity = quantity
