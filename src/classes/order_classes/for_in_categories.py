@@ -1,4 +1,6 @@
 class ForInCategories:
+    __slots__ = ('product', '__index')
+
     def __init__(self, product: list):
         self.product = product
 
