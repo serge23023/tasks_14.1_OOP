@@ -1,7 +1,8 @@
+from src.classes.mixins_classes.mixin_log import MixinCreationLogger
 from src.classes.products_classes.product import Product
 
 
-class Category:
+class Category(MixinCreationLogger):
     __total_categories = 0
     __total_unique_products = 0
 
@@ -24,6 +25,7 @@ class Category:
         self.__products = products if products else []
         Category.__total_categories += 1
         Category.__total_unique_products += len(set(p.name for p in self.__products))
+        self.log_creation()
 
     @property
     def products(self):
@@ -49,3 +51,6 @@ class Category:
             self.__products.append(product)
         else:
             raise TypeError
+
+    def __repr__(self):
+        return f'{self.__class__.__name__}({self.__name}, {self.__description}, {self.__products}'

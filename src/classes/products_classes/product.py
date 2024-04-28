@@ -1,4 +1,9 @@
-class Product:
+from src.classes.mixins_classes.mixin_log import MixinCreationLogger
+from src.classes.products_classes.abstact_product import AbstractProduct
+
+
+class Product(AbstractProduct, MixinCreationLogger):
+    __slots__ = ('name', 'description', '__price', 'quantity')
 
     @classmethod
     def create_product(cls, new_product: dict, product_list: list = None):
@@ -24,6 +29,7 @@ class Product:
         self.description = description
         self.__price = price  # !!!!!!!!! setter при инициализации?
         self.quantity = quantity
+        self.log_creation()
 
     @property
     def price(self):
@@ -46,3 +52,6 @@ class Product:
         if type(self) is not type(other):
             raise TypeError
         return self.__price * self.quantity + other.__price * other.quantity
+
+    def __repr__(self):
+        return f"\n{self.__class__.__name__}('{self.name}', '{self.description}', {self.price}, {self.quantity}"

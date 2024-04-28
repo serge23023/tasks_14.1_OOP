@@ -4,6 +4,9 @@ import pytest
 
 from src.classes.products_classes.product import Product
 
+if __name__ == '__main__':
+    pytest.main()
+
 
 def test_product(product_dict_test):
     # Тестирование создания продукта
@@ -67,8 +70,8 @@ def test_create_product_new_product(product_dict_test):
 
 def test_price_setter_negative():
     # Проверка, что при вводе отрицательной цены выводится сообщение об ошибке
+    product = Product('name', 'description', -10.0, 10)
     with patch('builtins.print') as mocked_print:
-        product = Product('name', 'description', -10.0, 10)
         product.price = -10.0
         mocked_print.assert_called_once_with('Введена некорректная цена: -10.0')
 
@@ -84,10 +87,6 @@ def test_price_setter_lower():
     with patch('builtins.input', return_value='y'):
         product.price = 5.0
     assert product.price == 5.0
-
-
-if __name__ == '__main__':
-    pytest.main()
 
 
 def test_price_setter_raise():
