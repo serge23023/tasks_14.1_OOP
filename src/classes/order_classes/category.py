@@ -1,8 +1,9 @@
 from src.classes.mixins_classes.mixin_log import MixinCreationLogger
+from src.classes.order_classes.abstract_order import AbstractOrder
 from src.classes.products_classes.product import Product
 
 
-class Category(MixinCreationLogger):
+class Category(AbstractOrder, MixinCreationLogger):
     __total_categories = 0
     __total_unique_products = 0
 

@@ -1,4 +1,4 @@
-from src.classes.category import Category
+from src.classes.order_classes.category import Category
 from src.classes.products_classes.product import Product
 from src.read_file import open_json
 
