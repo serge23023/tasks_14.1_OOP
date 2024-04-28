@@ -1,6 +1,6 @@
 import pytest
 
-from src.classes.category import Category
+from src.classes.order_classes.category import Category
 from src.utils import create_categories, add_product_to_category
 
 if __name__ == '__main__':

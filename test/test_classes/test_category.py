@@ -1,6 +1,6 @@
 import pytest
 
-from src.classes.category import Category
+from src.classes.order_classes.category import Category
 from src.classes.products_classes.product import Product
 
 if __name__ == '__main__':

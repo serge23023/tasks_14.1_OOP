@@ -1,6 +1,6 @@
 import pytest
 
-from src.classes.for_in_categories import ForInCategories
+from src.classes.order_classes.for_in_categories import ForInCategories
 from src.classes.products_classes.product import Product
 
 if __name__ == '__main__':
