@@ -1,3 +1,4 @@
+from src.classes.order_classes.category import Category
 from src.classes.order_classes.for_in_categories import ForInCategories
 from src.classes.order_classes.order import Order
 from src.classes.products_classes.lawn_grass import LawnGrass
@@ -8,13 +9,19 @@ if __name__ == '__main__':
     l_g = LawnGrass('d', 'dd', 0.0, 0, 'ddd', 'dddd', 'ddddd')
     o = Order(categories[0].products[0], 4)
 
+    c = Category("", '')
     print('---------------')
-    for product in ForInCategories(categories[0].products):
-        print(product)
-
+    print(categories[0].average_price())
     print('---------------')
-    for category in categories:
-        print(category)
-
+    print(c.average_price())
     print('---------------')
-    print(categories[0].products[0] + categories[0].products[1])
+    # print('---------------')
+    # for product in ForInCategories(categories[0].products):
+    #     print(product)
+    #
+    # print('---------------')
+    # for category in categories:
+    #     print(category)
+    #
+    # print('---------------')
+    # print(categories[0].products[0] + categories[0].products[1])

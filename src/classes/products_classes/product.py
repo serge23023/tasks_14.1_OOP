@@ -38,7 +38,7 @@ class Product(AbstractProduct, MixinCreationLogger):
     @price.setter
     def price(self, value):
         if value <= 0:
-            print(f'Введена некорректная цена: {value}')
+            raise ValueError("Введена некорректная цена")
         elif value < self.__price:
             if input(f'Цена после подтверждения: {value} руб.\nВведите "y" для подтверждения понижения цены:') == 'y':
                 self.__price = float(value)
