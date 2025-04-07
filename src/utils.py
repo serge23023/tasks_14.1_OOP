@@ -1,11 +1,11 @@
-from src.classes.order_classes.category import Category
-from src.classes.products_classes.product import Product
+from src.classes.category import Category
+from src.classes.product import Product
 from src.read_file import open_json
 
 
 def create_categories():
     categories = []
-    for item in open_json('products.json'):
+    for item in open_json('products.json', True):
         item['products'] = [Product.create_product(product) for product in item['products']]
         categories.append(Category(**item))
     return categories

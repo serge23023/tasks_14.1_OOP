@@ -1,9 +1,27 @@
+import json
 import pytest
 
-from src.classes.order_classes.category import Category
-from src.classes.products_classes.lawn_grass import LawnGrass
-from src.classes.products_classes.product import Product
-from src.classes.products_classes.smartphone import Smartphone
+from src.classes.category import Category
+from src.classes.product import Product
+
+
+@pytest.fixture()
+def mock_json_file(tmp_path):
+    # Создаем временный JSON-файл с корректным содержимым
+    data = [{"key": "value"}]
+    file_path = tmp_path / "test.json"
+    with file_path.open("w", encoding="utf-8") as f:
+        json.dump(data, f)
+    return file_path
+
+
+@pytest.fixture()
+def invalid_json_file(tmp_path):
+    # Создаем временный JSON-файл с некорректным содержимым
+    file_path = tmp_path / "invalid.json"
+    with file_path.open("w", encoding="utf-8") as f:
+        f.write("{invalid_json:}")  # Некорректный JSON
+    return file_path
 
 
 @pytest.fixture()
@@ -26,30 +44,3 @@ def categories_test(product_dict_test):
             'description',
             [Product.create_product(product_dict_test['product1'])])
     ].copy()
-
-
-@pytest.fixture()
-def lawn_grass_test():
-    return LawnGrass(
-        "Кентукки Блюграсс",
-        "Трава для газонов",
-        5,
-        100,
-        "USA",
-        "14 дней",
-        "Зеленый"
-    )
-
-
-@pytest.fixture()
-def smartphone_test():
-    return Smartphone(
-        "Samsung Galaxy C23 Ultra",
-        "256GB, Серый цвет, 200MP камера",
-        180000.0,
-        5,
-        "Флагман",
-        "C23 Ultra",
-        "256GB",
-        "Серый"
-    )

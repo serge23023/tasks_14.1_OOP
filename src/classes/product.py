@@ -1,5 +1,5 @@
-from src.classes.mixins_classes.mixin_log import MixinCreationLogger
-from src.classes.products_classes.abstact_product import AbstractProduct
+from src.classes.mixin_log import MixinCreationLogger
+from src.classes.abstact_product import AbstractProduct
 
 
 class Product(AbstractProduct, MixinCreationLogger):
@@ -54,4 +54,4 @@ class Product(AbstractProduct, MixinCreationLogger):
         return self.__price * self.quantity + other.__price * other.quantity
 
     def __repr__(self):
-        return f"\n{self.__class__.__name__}('{self.name}', '{self.description}', {self.price}, {self.quantity}"
+        return f"{self.__class__.__name__}('{self.name}', '{self.description}', {self.price}, {self.quantity})"
