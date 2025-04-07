@@ -1,6 +1,6 @@
-from classes.category import Category  # pragma: no cover
+from classes.category import Category
 from classes.product import Product  # pragma: no cover
-from src.utils import create_categories  # pragma: no cover
+from utils import create_categories  # pragma: no cover
 
 if __name__ == '__main__':  # pragma: no cover
     categories = create_categories()

@@ -1,6 +1,6 @@
-from src.classes.category import Category
-from src.classes.product import Product
-from src.read_file import open_json
+from classes.category import Category
+from classes.product import Product
+from read_file import open_json
 
 
 def create_categories():

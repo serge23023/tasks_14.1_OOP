@@ -1,5 +1,5 @@
-from src.classes.mixin_log import MixinCreationLogger
-from src.classes.abstact_product import AbstractProduct
+from classes.mixin_log import MixinCreationLogger
+from classes.abstact_product import AbstractProduct
 
 
 class Product(AbstractProduct, MixinCreationLogger):
