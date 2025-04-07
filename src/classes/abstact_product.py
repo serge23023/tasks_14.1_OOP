@@ -6,20 +6,20 @@ class AbstractProduct(ABC):
     @classmethod
     @abstractmethod
     def create_product(cls, new_product: dict, product_list: list = None):
-        pass
+        pass # pragma: no cover
 
     @abstractmethod
     def __init__(self):
-        pass
+        pass # pragma: no cover
 
     @abstractmethod
     def __add__(self, other):
-        pass
+        pass # pragma: no cover
 
     @abstractmethod
     def __str__(self):
-        pass
+        pass # pragma: no cover
 
     @abstractmethod
     def __repr__(self):
-        pass
+        pass # pragma: no cover
