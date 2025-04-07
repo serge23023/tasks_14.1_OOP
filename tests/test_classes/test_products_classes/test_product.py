@@ -2,7 +2,7 @@ from unittest.mock import patch
 
 import pytest
 
-from src.classes.product import Product
+from classes.product import Product
 
 if __name__ == '__main__':
     pytest.main()

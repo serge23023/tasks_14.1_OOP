@@ -1,7 +1,7 @@
 import pytest
 
-from src.classes.category import Category
-from src.utils import create_categories, add_product_to_category
+from classes.category import Category
+from utils import create_categories, add_product_to_category
 
 if __name__ == '__main__':
     pytest.main()
